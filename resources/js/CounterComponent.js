@@ -1,15 +1,20 @@
 import React from 'react';
-import Counter from './Counter';
 
 var CounterComponent = React.createClass({
-    getInitialState: function() {
+
+    getDefaultProps: function() {
         return {
             count: 0
         };
     },
 
+    getInitialState: function() {
+        return {
+            count: this.props.count
+        };
+    },
+
     componentDidMount: function() {
-        new Counter();
 
         setInterval(function() {
             this.tick();

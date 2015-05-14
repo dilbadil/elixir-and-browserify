@@ -1,6 +1,9 @@
+var angular = require('angular');
 var React = require('react');
-var Counter = require('./Counter')
+var ngreact = require('ngreact');
 var CounterComponent = require('./CounterComponent');
+var CounterController = require('./controllers/CounterController');
 
-React.render(<CounterComponent />, document.body);
-
+angular.module('app', ['react'])
+    .value('CounterComponent', CounterComponent)
+    .controller('CounterController', CounterController)

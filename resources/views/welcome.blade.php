@@ -1,4 +1,4 @@
-<html>
+<html ng-app="app">
 	<head>
 		<title>Laravel</title>
 		
@@ -39,6 +39,9 @@
 	</head>
 	<body>
 		<div class="container">
+            <div ng-controller="CounterController">
+                <react-component props="{count: 9}" name="CounterComponent"></react-component>
+            </div>
             
             <script src="/js/bundle.js"></script>
 		</div>
