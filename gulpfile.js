@@ -12,5 +12,10 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+
+   // Main
    mix.browserify('app.js', null, 'resources/js');
+
+   // Less
+   mix.less('app-popoint.less', null, './');
 });

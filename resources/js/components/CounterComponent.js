@@ -1,4 +1,8 @@
 import React from 'react';
+import mui from 'material-ui';
+
+var RaisedButton = mui.RaisedButton;
+var IconButton = mui.IconButton;
 
 var CounterComponent = React.createClass({
 
@@ -30,7 +34,8 @@ var CounterComponent = React.createClass({
     render: function() {
         return (
             <h1>
-                Counter {this.state.count} 
+                <RaisedButton label={this.state.count} />
+                <IconButton iconClassName="fa fa-github" tooltip="GitHub" />
             </h1>
         );
     }

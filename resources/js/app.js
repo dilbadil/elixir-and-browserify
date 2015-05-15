@@ -1,9 +1,13 @@
 var angular = require('angular');
-var React = require('react');
 var ngreact = require('ngreact');
-var CounterComponent = require('./CounterComponent');
+var CounterComponent = require('./components/CounterComponent');
+var MenubarComponent = require('./components/MenubarComponent');
 var CounterController = require('./controllers/CounterController');
+var injectTapEventPlugin = require('react-tap-event-plugin');
+
+injectTapEventPlugin();
 
 angular.module('app', ['react'])
     .value('CounterComponent', CounterComponent)
+    .value('MenubarComponent', MenubarComponent)
     .controller('CounterController', CounterController)
