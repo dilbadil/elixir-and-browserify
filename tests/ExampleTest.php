@@ -1,5 +1,7 @@
 <?php
 
+use Laracasts\TestDummy\Factory as TestDummy;
+
 class ExampleTest extends TestCase {
 
 	/**
@@ -9,9 +11,28 @@ class ExampleTest extends TestCase {
 	 */
 	public function testBasicExample()
 	{
-		$response = $this->call('GET', '/');
-
-		$this->assertEquals(200, $response->getStatusCode());
+        $this->visit('/');
 	}
+
+    public function testLoadPosts()
+    {
+        TestDummy::create('App\Post', ['title' => 'Some Post']);
+
+        $this->visit('posts')
+            ->andSee('Some Post');
+    }
+
+    public function testPublishPost()
+    {
+        // $post = TestDummy::attributesFor('App\Post');
+
+        $this->visit('posts/create')
+            ->type('Foo', 'title')
+            ->type('The body', 'body')
+            ->press('Publish Post')
+            ->see('Foo')
+            ->onPage('posts')
+            ->verifyInDatabase('posts', ['title' => 'Foo']);
+    }
 
 }
